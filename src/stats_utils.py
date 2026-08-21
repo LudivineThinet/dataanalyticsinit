@@ -53,6 +53,16 @@ def calculer_marge_erreur(liste_nombres):
         return 0
     return max(liste_nombres) - min(liste_nombres)
 
+def calculer_taux_anomalies(transactions_valides, anomalies):
+    """
+    Calcule le pourcentage de transactions considérées comme anomalies
+    par rapport au total des transactions valides.
+    """
+    if not transactions_valides:
+        return 0
+    return (len(anomalies) / len(transactions_valides)) * 100
+    
+
 
 if __name__ == "__main__":
     # Jeu de données de test
@@ -71,3 +81,13 @@ if __name__ == "__main__":
     print(f"Transactions anormalement élevées : {rapport['anomalies']}")
     marge_erreur = calculer_marge_erreur([t for t in jeu_de_test if t > 0])
     print(f"Marge d'erreur (étendue) : {marge_erreur} €")
+    transactions_valides = [t for t in jeu_de_test if t > 0]
+    taux_anomalies = calculer_taux_anomalies(transactions_valides, rapport['anomalies'])
+    print(f"Taux d'anomalies : {taux_anomalies:.1f} %")
+
+
+   
+
+
+
+
