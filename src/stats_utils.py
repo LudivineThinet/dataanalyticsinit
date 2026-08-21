@@ -42,6 +42,16 @@ def analyser_ventes(transactions):
     }
 
     return resultats
+def calculer_marge_erreur(liste_nombres):
+    """
+    Calcule la marge d'erreur (étendue) d'une liste de nombres.
+    L'étendue est la différence entre la valeur maximale et la valeur
+    minimale : elle donne une idée rapide de l'amplitude de variation
+    des données.
+    """
+    if not liste_nombres:
+        return 0
+    return max(liste_nombres) - min(liste_nombres)
 
 
 if __name__ == "__main__":
@@ -59,3 +69,5 @@ if __name__ == "__main__":
     print(f"Valeur max : {rapport['valeur_max']} €")
     print(f"Valeur min : {rapport['valeur_min']} €")
     print(f"Transactions anormalement élevées : {rapport['anomalies']}")
+    marge_erreur = calculer_marge_erreur([t for t in jeu_de_test if t > 0])
+    print(f"Marge d'erreur (étendue) : {marge_erreur} €")
